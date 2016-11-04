@@ -1,0 +1,10 @@
+{% block title %}YoutubeURLInput - {{ block.super }}{% endblock %}
+
+{% block content %}
+<h1>Input Here:</h1>
+<form role="form" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
