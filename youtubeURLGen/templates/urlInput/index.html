@@ -1,7 +1,5 @@
-{% block title %}YoutubeURLInput{% endblock %}
-
 {% block content %}
-<h1>Input Here:</h1>
+<h1>YouTube URL Input:</h1>
 <form role="form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}

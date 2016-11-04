@@ -1,3 +1,4 @@
 from django.db import models
 
-# Create your models here.
+class urlInput(models.Model):
+    web_url = models.URLField()
