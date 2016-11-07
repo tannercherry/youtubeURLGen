@@ -9,7 +9,7 @@ def input(request):
     if request.POST:
         form = urlForm(request.POST)
         if form.is_valid():
-          urlAdd = form.save()
+          form.save()
 
     return render(request, 'urlInput/index.html', {'form': form})
 
@@ -18,4 +18,4 @@ def urls(request):
     return render(request, 'urlInput/urls.html', {'urlAddresses' : urlAddresses})
 
 
-'''.raw("SELECT substring(web_url, LEN(web_url) - PATINDEX('=', web_url)) FROM db")'''
+'''.raw("SELECT substring(web_url, LEN(web_url) - PATINDEX('?v=', web_url)) FROM db")'''

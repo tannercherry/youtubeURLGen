@@ -4,4 +4,4 @@ class urlInput(models.Model):
     web_url = models.URLField(unique = True)
 
     def __unicode__(self):
-        return self.web_url
+        return self.web_url.replace('https://www.youtube.com/watch?v=', '')
