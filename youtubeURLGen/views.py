@@ -14,5 +14,5 @@ def input(request):
     return render(request, 'urlInput/index.html', {'form': form})
 
 def urls(request):
-    urlAddresses = urlInput.objects.all()
+    urlAddresses = urlInput.objects.all().values()
     return render(request, 'urlInput/urls.html', {'urlAddresses' : urlAddresses})
