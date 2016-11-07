@@ -14,5 +14,8 @@ def input(request):
     return render(request, 'urlInput/index.html', {'form': form})
 
 def urls(request):
-    urlAddresses = urlInput.objects.all().values()
+    urlAddresses = urlInput.objects.all().values_list()
     return render(request, 'urlInput/urls.html', {'urlAddresses' : urlAddresses})
+
+
+'''.raw("SELECT substring(web_url, LEN(web_url) - PATINDEX('=', web_url)) FROM db")'''
