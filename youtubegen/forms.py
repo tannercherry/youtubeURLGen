@@ -1,4 +1,13 @@
 from django import forms
+from django.forms import ModelForm
 
-class urlForm(forms.Form):
-    youtube_url = forms.URLField(label = 'Copy and Paste Here')
+from youtubeURLGen.models import urlInput
+
+class urlForm(ModelForm):
+    class Meta:
+        model = urlInput
+
+        fields = ['web_url']
+
+'''youtube_url = forms.URLField(label = 'Copy and Paste Here')'''
+
