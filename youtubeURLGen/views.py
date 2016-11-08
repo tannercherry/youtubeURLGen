@@ -9,6 +9,7 @@ def input(request):
     if request.POST:
         form = urlForm(request.POST)
         if form.is_valid():
+          '''form.__delattr__("https://youtube.com/watch?v=")'''
           form.save()
 
     return render(request, 'urlInput/index.html', {'form': form})
