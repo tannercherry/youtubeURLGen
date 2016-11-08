@@ -8,6 +8,3 @@ class urlForm(ModelForm):
         model = urlInput
 
         fields = ['web_url']
-
-'''youtube_url = forms.URLField(label = 'Copy and Paste Here')'''
-
