@@ -1,15 +1,19 @@
 from django.db import models
 
 
+
 '''optional function to try'''
 import re
 
 def getNormalized(url):
-    return re.sub('https://www.youtube.com/watch?v=', url)
+    url = url.replace('https://www.youtube.com/watch?v=', '')
+    return url
+
 '''end function'''
 
 class urlInput(models.Model):
-    web_url = models.URLField(unique = True
+    web_url = models.URLField(max_length = 43, unique = True)
+    getNormalized(web_url)
 
     def __unicode__(self):
-        return self.web_url.replace('https://www.youtube.com/watch?v=', '')
+        return self.web_url
