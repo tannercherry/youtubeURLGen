@@ -1,7 +1,7 @@
 from django.db import models
 
 class urlInput(models.Model):
-    web_url = models.URLField(max_length = 43, unique = True)
+    web_url = models.URLField(unique = True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.web_url
