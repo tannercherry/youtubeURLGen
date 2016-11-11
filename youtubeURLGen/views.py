@@ -9,6 +9,7 @@ def input(request):
         web = extra_form.web_url
         web_string = web.replace("https://www.youtube.com/watch?v=", "")
         new_input = urlInput(web_url=web_string)
+        new_input.validate_unique()
         new_input.save()
     return render(request, 'urlInput/index.html', {'form': form})
 
