@@ -1,24 +1,17 @@
 from django.shortcuts import render
 from youtubegen.forms import urlForm
 from .models import urlInput
-from urllib.parse import urlparse
 
 def input(request):
-    form = urlForm()
-    if request.POST:
-        form = urlForm(request.POST)
-        if form.is_valid():
-          form.save()
+    form = urlForm(request.POST)
+    if request.method == "POST" and form.is_valid():
+            web_url = form.cleaned_data['web_url']
+            web_url2 = web_url.replace("https://www.youtube.com/watch?v=", "")
+            form.web_url = web_url2
+            form.save()
 
     return render(request, 'urlInput/index.html', {'form': form})
 
-def update(request, ID):
-    a = 0
-    for a in urlInput.objects.ID():
-        change_url = urlInput.objects.get(ID=a)
-        change_url = change_url[33:]
-        change_url.save()
-
 def urls(request):
     urlAddresses = urlInput.objects.all().values_list()
-    return render(request, 'urlInput/urls.html', {'url_list' : urlAddresses})
+    return render(request, 'urlInput/urls.html', {'urlAddresses' : urlAddresses})
