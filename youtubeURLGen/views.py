@@ -4,12 +4,12 @@ from .models import urlInput
 
 def input(request):
     form = urlForm(request.POST)
-    if request.method == "POST" and form.is_valid():
-        tform = form.save(commit = False)
-        web = tform.web_url
-        web_string = web[33:]
+    if form.is_valid():
+        extra_form = form.save(commit = False)
+        web = extra_form.web_url
+        web_string = web.replace("https://www.youtube.com/watch?v=", "")
         form.web_url = web_string
-        form.save()
+        form.save(commit = True)
     return render(request, 'urlInput/index.html', {'form': form})
 
 def urls(request):
