@@ -6,5 +6,4 @@ from youtubeURLGen.models import urlInput
 class urlForm(ModelForm):
     class Meta:
         model = urlInput
-
         fields = ['web_url']
