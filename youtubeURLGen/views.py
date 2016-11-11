@@ -5,11 +5,11 @@ from .models import urlInput
 def input(request):
     form = urlForm(request.POST)
     if request.method == "POST" and form.is_valid():
-        form.save(id)
-        web = form.data['web_url']
+        tform = form.save(commit = False)
+        web = tform.web_url
         web_string = web[33:]
         form.web_url = web_string
-        '''find way to save string as form here'''
+        form.save()
     return render(request, 'urlInput/index.html', {'form': form})
 
 def urls(request):
