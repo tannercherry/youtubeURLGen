@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from youtubegen.forms import urlForm
 from .models import urlInput
 
@@ -33,7 +33,7 @@ def input(request):
             new_input.validate_unique()
             new_input.save()
         else:
-            print ("Error, please try a new url")
+            return HttpResponseRedirect("/error.html")
     return render(request, 'urlInput/index.html', {'form': form})
 
 def urls(request):
