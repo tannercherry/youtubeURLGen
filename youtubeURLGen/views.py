@@ -33,7 +33,7 @@ def input(request):
             new_input.validate_unique()
             new_input.save()
         else:
-            return HttpResponseRedirect("/error.html")
+            return render(request, 'error.html')
     return render(request, 'urlInput/index.html', {'form': form})
 
 def urls(request):
