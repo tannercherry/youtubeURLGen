@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render
 from youtubegen.forms import urlForm
 from .models import urlInput
 
@@ -18,8 +18,7 @@ def input(request):
             new_input.validate_unique()
             new_input.save()
         elif web.startswith("http://www.youtube.com/watch?v="):
-            web_string = web.replace("http://www."
-                                     ".com/watch?v=", "")
+            web_string = web.replace("http://www.youtube.com/watch?v=", "")
             new_input = urlInput(web_url=web_string)
             new_input.validate_unique()
             new_input.save()
@@ -37,8 +36,9 @@ def input(request):
             return render(request, 'error.html')
     return render(request, 'urlInput/index.html', {'form': form})
 
-def validate_unique():
-    
+def validate_unique(self):
+    if urlInput.objects.filter(web_url = "self").exists():
+        print ('URL already exists in the database!')
 
 def urls(request):
     urlAddresses = list(urlInput.objects.all().values_list())
