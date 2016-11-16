@@ -36,6 +36,7 @@ def input(request):
             return render(request, 'error.html')
     return render(request, 'urlInput/index.html', {'form': form})
 
+'''function below doesn't do anything yet'''
 def validate_unique(self):
     if urlInput.objects.filter(web_url = "self").exists():
         print ('URL already exists in the database!')
