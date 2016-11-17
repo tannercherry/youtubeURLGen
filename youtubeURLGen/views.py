@@ -15,7 +15,8 @@ def input(request):
         elif web.startswith("www.youtube.com/watch?v="):
             web_string = web.replace("www.youtube.com/watch?v=", "")
             new_input = urlInput(web_url=web_string)
-            new_input.validate_unique()
+            if new_input.validate_unique().redirect('error.html'):
+                return render(request, 'error.html')
             new_input.save()
         elif web.startswith("http://www.youtube.com/watch?v="):
             web_string = web.replace("http://www.youtube.com/watch?v=", "")
