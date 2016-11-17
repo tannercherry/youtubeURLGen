@@ -36,10 +36,6 @@ def input(request):
             return render(request, 'error.html')
     return render(request, 'urlInput/index.html', {'form': form})
 
-def validate_unique(self):
-    if urlInput.objects.filter(web_url = "self").exists():
-        print ('URL already exists in the database!')
-
 def urls(request):
     urlAddresses = list(urlInput.objects.all().values_list())
     return render(request, 'urlInput/urls.html', {'urlAddresses' : urlAddresses})
