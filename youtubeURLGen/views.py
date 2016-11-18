@@ -2,6 +2,8 @@ from django.shortcuts import render
 from youtubegen.forms import urlForm
 from .models import urlInput
 
+'''validate_unique only returns default page, need to find way to customize page for redirect'''
+
 def input(request):
     form = urlForm(request.POST)
     if form.is_valid():
