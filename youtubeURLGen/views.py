@@ -5,7 +5,7 @@ from .models import urlInput
 def input(request):
     form = urlForm(request.POST)
     if form.is_valid():
-        extra_form = form.save(commit = False)
+        extra_form = form.save(commit=False)
         web = extra_form.web_url
         if web.startswith("https://www.youtube.com/watch?v="):
             web_string = web.replace("https://www.youtube.com/watch?v=", "")
