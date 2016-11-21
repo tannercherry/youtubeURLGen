@@ -2,16 +2,15 @@ from django.shortcuts import render
 from youtubegen.forms import urlForm
 from .models import urlInput
 
-'''validate_unique only returns default page, need to find way to customize page for redirect'''
-
 def input(request):
     form = urlForm(request.POST)
     if form.is_valid():
-        extra_form = form.save(commit = False)
+        extra_form = form.save(commit=False)
         web = extra_form.web_url
         if web.startswith("https://www.youtube.com/watch?v="):
             web_string = web.replace("https://www.youtube.com/watch?v=", "")
             new_input = urlInput(web_url=web_string)
+            '''validate_unique only returns default page'''
             new_input.validate_unique()
             new_input.save()
         elif web.startswith("www.youtube.com/watch?v="):
